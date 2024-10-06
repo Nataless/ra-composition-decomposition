@@ -1,26 +1,78 @@
-import React from 'react';
-import logo from './logo.svg';
+import { v4 as uuidv4 } from 'uuid';
 import './App.css';
+import Banner from './components/Banner/Banner';
+import News from './components/News/News';
+import Search from './components/Search/Search';
+import Services from './components/Services/Services';
+import NewsItemProps from './components/Interfaces/NewsItemProps';
+import NewsItem from './components/News/NewsItem';
+import Service from './components/Services/Service';
+import Menu from './components/Menu/Menu';
+
+/**
+ * @description создание макета страницы
+ * @param {string} News - Новостной блок
+ * @param {string} Menu - Основное Меню
+ * @param {string} NewsItem - Элемент Новостного блока
+ * @param {string} Search - Блок Поиска
+ * @param {string} Banner - Баннер рекламный
+ * @param {string} Service - Сервис
+ * @param {string} Services- Блок Сервисов
+ */
+
+const news: NewsItemProps[] = [
+  {
+    id: uuidv4(),
+    name: 'news name 1',
+    icon: 'icon 1',
+    href: '#',
+  },
+  {
+    id: uuidv4(),
+    name: 'news name 2',
+    icon: 'icon 2',
+    href: '#',
+  },
+  {
+    id: uuidv4(),
+    name: 'news name 3',
+    icon: 'icon 3',
+    href: '#',
+  }
+];
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <div className="main block">
+        <h1>Main block</h1>
+        <News>
+          {[
+            <Menu key={uuidv4()} items={['Opt1', 'Opt2', 'Opt3']} />,
+            ...news.map((newsItem) => <NewsItem {...newsItem} key={newsItem.id} />)
+          ]}
+        </News>
+        <Search />
+        <Banner />
+        <Services>
+          <Service title='Service 1'>
+            <div>Service content 1</div>
+          </Service>
+          <Service title='Service 2'>
+            <ul>
+              <li>item 1</li>
+              <li>item 2</li>
+              <li>item 3</li>
+            </ul>
+          </Service>
+          <Service title='Service 3'>
+            <div>Content service 3</div>
+          </Service>
+        </Services>
+      </div>
+    </>
+  )
 }
 
-export default App;
+export default App
