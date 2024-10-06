@@ -4,6 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+/**
+ * Site Name
+ * @type {string}
+ */
+const siteName = "Composition-decomposition";
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );

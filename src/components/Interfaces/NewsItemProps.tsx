@@ -1,5 +1,5 @@
 /** 
- * @module NewsItemProps
+ * @param {number} NewsItemProps
 * описывает Интерфейс, его элементы и типы данных*/
 
 interface NewsItemProps {
